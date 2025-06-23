@@ -4,7 +4,7 @@ let heightSpan;
 let massSpan;
 let filmsDiv;
 let planetDiv;
-const baseUrl = `http://localhost:9001/api`;
+const baseUrl = `https://swapi.info/api`;
 
 // Runs on page load
 addEventListener('DOMContentLoaded', () => {
@@ -33,13 +33,17 @@ async function getCharacter(id) {
 
 }
 async function fetchCharacter(id) {
-  let characterUrl = `${baseUrl}/characters/${id}`;
+  let characterUrl = `${baseUrl}/people/${id}`;
   return await fetch(characterUrl)
     .then(res => res.json())
 }
 
 async function fetchHomeworld(character) {
-  const url = `${baseUrl}/planets/${character?.homeworld}`;
+  const tempUrl = new URL(character.homeworld);
+  const pathnameParts = tempUrl.pathname.split('/');
+  const planetId = pathnameParts[pathnameParts.lastIndexOf('planets') + 1];
+
+  const url = `${baseUrl}/planets/${planetId}`;
   const planet = await fetch(url)
     .then(res => res.json())
   return planet;
@@ -47,8 +51,16 @@ async function fetchHomeworld(character) {
 
 async function fetchFilms(character) {
   const url = `${baseUrl}/characters/${character?.id}/films`;
-  const films = await fetch(url)
-    .then(res => res.json())
+
+  const filmUrls = character.films;
+  const films = [];
+
+  for (const url of filmUrls) {
+    const film = await fetch(url)
+      .then(res => res.json());
+    films.push(film);
+  }
+
   return films;
 }
 
@@ -58,7 +70,21 @@ const renderCharacter = character => {
   heightSpan.textContent = character?.height;
   massSpan.textContent = character?.mass;
   birthYearSpan.textContent = character?.birth_year;
-  homeworldSpan.innerHTML = `<a href="/planet.html?id=${character?.homeworld.id}">${character?.homeworld.name}</a>`;
-  const filmsLis = character?.films?.map(film => `<li><a href="films/film.html?id=${film.id}">${film.title}</li>`)
-  filmsUl.innerHTML = filmsLis.join("");
+
+  console.log("Character: ", character)
+
+  const tempUrl = new URL(character.homeworld.url);
+  const pathnameParts = tempUrl.pathname.split('/');
+  const planetId = pathnameParts[pathnameParts.lastIndexOf('planets') + 1];
+
+  homeworldSpan.innerHTML = `<a href="/planet.html?id=${planetId}">${character?.homeworld.name}</a>`;
+  const filmsList = character?.films?.map(film => {
+
+    const tempUrl = new URL(film.url);
+    const pathnameParts = tempUrl.pathname.split('/');
+    const filmId = pathnameParts[pathnameParts.lastIndexOf('films') + 1];
+
+    return `<li><a href="films/film.html?id=${filmId}">${film.title}</li>`
+  })
+  filmsUl.innerHTML = filmsList.join("");
 }

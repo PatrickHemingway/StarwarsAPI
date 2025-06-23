@@ -25,10 +25,6 @@ async function getCharacter(id) {
     character = await fetchCharacter(id)
     character.homeworld = await fetchHomeworld(character)
     character.films = await fetchFilms(character)
-
-    homeworldSpan.addEventListener('click', () => {
-      window.location.href=''
-    })
   }
   catch (ex) {
     console.error(`Error reading character ${id} data.`, ex.message);
@@ -46,9 +42,6 @@ async function fetchHomeworld(character) {
   const url = `${baseUrl}/planets/${character?.homeworld}`;
   const planet = await fetch(url)
     .then(res => res.json())
-
-  
-  console.log(url, planet)
   return planet;
 }
 

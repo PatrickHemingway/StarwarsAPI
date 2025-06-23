@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:9001/api`;
+const baseUrl = `https://swapi.info/api`;
 
 addEventListener('DOMContentLoaded', () => {
     const sp = new URLSearchParams(window.location.search);

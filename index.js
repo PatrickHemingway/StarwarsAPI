@@ -5,7 +5,7 @@ const charactersList = document.querySelector("#charactersList")
 document.addEventListener('DOMContentLoaded', getCharacters)
 
 async function getCharacters() {
-  let url = 'http://localhost:9001/api/characters';
+  let url = 'https://swapi.info/api/people';
 
   try {
     const fetchedCharacters = await fetch(url)
@@ -29,7 +29,12 @@ const filterCharacters = () => {
 const renderCharacters = characters => {
   const divs = characters.map(character => {
     const el = document.createElement('div');
-    el.addEventListener('click', () => goToCharacterPage(character.id));
+
+    const url = new URL(character.url);
+    const pathnameParts = url.pathname.split('/');
+    const characterId = pathnameParts[pathnameParts.lastIndexOf('people') + 1];
+
+    el.addEventListener('click', () => goToCharacterPage(characterId));
     el.textContent = character.name;
     return el;
   })

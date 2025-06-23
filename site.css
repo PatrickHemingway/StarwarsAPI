@@ -95,12 +95,14 @@ h1#name {
 
 section#planets,
 section#characters,
+section#residents,
 section#films {
   margin: 50px;
 }
 
 section#planets ul,
 section#characters ul,
+section#residents ul,
 section#films ul {
   list-style-type: none;
   padding: 0;
@@ -108,6 +110,7 @@ section#films ul {
 
 section#planets a,
 section#characters a,
+section#residents a,
 section#films a {
   display: inline-block;
   text-decoration: none;

@@ -231,3 +231,33 @@ section#films a:hover {
     padding: 1em;
   }
 }
+
+.planets-list {
+  display: flex; 
+  flex-wrap: wrap;
+  list-style-type: none; 
+  padding: 0;
+  margin: 0;
+}
+
+.planets-list li {
+  margin-right: 10px; 
+}
+
+.planets-list a {
+  text-decoration: none; 
+  color: #000;
+}
+
+.characters-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.characters-list li{
+  margin-right: 10px;
+  margin-left: 10px;
+}

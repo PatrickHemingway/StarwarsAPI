@@ -66,7 +66,7 @@ const renderFilm = film => {
     return `<li><a href="/planet.html?id=${planetId}">${planet.name}</a></li>`;
   });
 
-  planetsSection.innerHTML = `<h2>Planets</h2><ul>${planetsLis.join("")}</ul>`;
+  planetsSection.innerHTML = `<h2>Planets</h2><ul class="planets-list">${planetsLis.join("")}</ul>`;
 
   const charactersLis = film?.characters?.map(character => {
     const characterUrl = new URL(character.url);
@@ -74,5 +74,5 @@ const renderFilm = film => {
     return `<li><a href="/character.html?id=${characterId}">${character.name}</a></li>`;
   });
 
-  charactersSection.innerHTML = `<h2>Characters</h2><ul>${charactersLis.join("")}</ul>`;
+  charactersSection.innerHTML = `<h2>Characters</h2><ul class="characters-list">${charactersLis.join("")}</ul>`;
 }

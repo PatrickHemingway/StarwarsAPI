@@ -261,3 +261,81 @@ section#films a:hover {
   margin-right: 10px;
   margin-left: 10px;
 }
+/*Trav AI Generated*/
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-right: 20px;
+}
+
+.planet {
+  width: 100px; /* Larger size for the planet */
+  height: 100px;
+  background-color: #b0c4de; /* Light steel blue for a grayish look */
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 0 10px #8b9dc3, 0 0 20px #8b9dc3; /* Inner shadow for depth */
+  overflow: hidden; /* Ensure child elements don't overflow */
+}
+
+/* Adding island-like features */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-right: 20px;
+}
+
+.planet {
+  width: 100px; /* Larger size for the planet */
+  height: 100px;
+  background-color: #b0c4de; /* Light steel blue for a grayish look */
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 0 10px #8b9dc3, 0 0 20px #8b9dc3; /* Inner shadow for depth */
+  overflow: hidden; /* Ensure child elements don't overflow */
+  animation: spin 5s linear infinite; /* Apply spinning animation */
+}
+
+/* Adding island-like features */
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  margin-right: 20px;
+}
+
+.planet-container {
+  perspective: 1000px; /* Create a 3D perspective */
+}
+
+.planet {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, #b1c3f4, #5c70ba);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: inset 0 0 10px #8b9dc3, 0 0 20px #8b9dc3;
+  animation: spin 10s linear infinite;
+  transform-style: preserve-3d;
+}
+
+
+@keyframes spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}

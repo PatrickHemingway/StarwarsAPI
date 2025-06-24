@@ -11,62 +11,128 @@ p {
 }
 
 :root {
-  font-family: Arial, Helvetica, sans-serif;
-  --dark1: black;
-  --light1: white;
-  --dark2: darkblue;
-  --light2: lightblue;
-  background-color: var(--light1);
-  color: var(--dark1);
+  font-family: 'Segoe UI', 'Arial', Helvetica, sans-serif;
+  --dark1: #0d1117;
+  --light1: #f5f5f7;
+  --dark2: #1f6feb;
+  --light2: #21262d;
+  --accent: #ffe81f;
+  --card-bg: #222b3a;
+  --card-shadow: 0 4px 24px 0 rgba(0,0,0,0.5);
+  background-color: var(--dark1);
+  color: var(--light1);
 }
 
-button {
-  background-color: var(--light2);
-  color: var(--dark2);
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--dark2);
+body {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top, #232526 0%, #0d1117 100%);
+  color: var(--light1);
+  margin: 0;
+  padding: 0;
 }
 
-input {
-  display: block;
-  width: 95%;
-  font-weight: bold;
-  font-size: 1.1em;
-  line-height: 1.5em;
-  border: none;
-  border-bottom: 2px solid var(--dark2);
-  outline: none;
-  margin: 5px;
+h1, h2, h3, h4, h5 {
+  font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-shadow: 0 0 8px #ffe81f88, 0 0 2px #fff;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 1em;
 }
 
 label {
   font-weight: bold;
   font-size: 1.1em;
+  color: var(--accent);
+  margin-bottom: 0.5em;
+  display: block;
+}
+
+input {
+  display: block;
+  width: 100%;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  border: none;
+  border-bottom: 2px solid var(--accent);
+  outline: none;
+  margin: 10px 0 20px 0;
+  background: var(--light2);
+  color: var(--light1);
+  padding: 10px;
+  border-radius: 4px 4px 0 0;
+  transition: border-color 0.2s;
+}
+input:focus {
+  border-bottom: 2.5px solid var(--dark2);
+  background: #232526;
+}
+
+button {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--dark2) 100%);
+  color: var(--dark1);
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 8px #0008;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin: 10px 0;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+button:hover {
+  background: linear-gradient(90deg, var(--dark2) 0%, var(--accent) 100%);
+  color: var(--accent);
+  box-shadow: 0 4px 16px #ffe81f44;
 }
 
 .small {
   font-size: small;
   font-weight: normal;
+  color: #aaa;
 }
 
 /* Characters */
 #charactersList {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 0;
+  justify-content: center;
+  gap: 2em;
+  padding: 2em 0;
 }
 
 #charactersList div {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid var(--dark2);
-  border-radius: 5px;
-  color: var(--dark2);
-  background-color: var(--light2);
+  background: var(--card-bg);
+  color: var(--accent);
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  padding: 1.5em 2em;
+  margin: 0.5em;
+  min-width: 220px;
+  max-width: 300px;
   font-weight: bold;
+  font-size: 1.1em;
+  border: 1.5px solid var(--dark2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+#charactersList div:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px #ffe81f33, var(--card-shadow);
+  border-color: var(--accent);
 }
 
 /* Character page */
@@ -77,27 +143,36 @@ h1#name {
 #generalInfo {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  border: 20px;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 2em;
 }
 
 #generalInfo p {
-  padding: 20px;
-  margin: 10px;
-  color: var(--dark2);
-  background-color: var(--light2);
+  background: var(--light2);
+  color: var(--accent);
+  border-radius: 8px;
+  padding: 1em 1.5em;
+  margin: 0.5em 0;
+  box-shadow: 0 2px 8px #0004;
+  font-size: 1.1em;
 }
 
 #generalInfo span {
   font-weight: bold;
   font-size: 1.1em;
+  color: var(--light1);
 }
 
 section#planets,
 section#characters,
 section#residents,
 section#films {
-  margin: 50px;
+  margin: 2em 0;
+  padding: 1.5em;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px #0003;
 }
 
 section#planets ul,
@@ -106,6 +181,7 @@ section#residents ul,
 section#films ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 
 section#planets a,
@@ -115,12 +191,43 @@ section#films a {
   display: inline-block;
   text-decoration: none;
   font-size: 1.1em;
-
-  background-color: var(--light2);
-  color: var(--dark2);
+  background: linear-gradient(90deg, var(--dark2) 0%, var(--accent) 100%);
+  color: var(--dark1);
   font-weight: bold;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--dark2);
+  padding: 10px 18px;
+  margin: 8px 8px 0 0;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 2px 8px #ffe81f22;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+section#planets a:hover,
+section#characters a:hover,
+section#residents a:hover,
+section#films a:hover {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--dark2) 100%);
+  color: var(--accent);
+  box-shadow: 0 4px 16px #ffe81f44;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  main {
+    padding: 1em 0.5em;
+  }
+  #charactersList {
+    gap: 1em;
+  }
+}
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  main {
+    padding: 0.5em 0.2em;
+  }
+  #charactersList div {
+    min-width: 140px;
+    padding: 1em;
+  }
 }

@@ -7,18 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Star Wars Characters</title>
   <link rel="stylesheet" href="site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
   <script src="index.js" defer></script>
 </head>
 
 <body>
-  <div>
-    <h1>Star Wars Universe Lookup</h1>
-    <label for="searchString">Who you looking for? <span class="small">(Regular expressions are cool
-        here)</span></label>
-    <input id="searchString" oninput="filterCharacters()" autocomplete="off" />
-  </div>
-  <section id="charactersList">
-  </section>
+  <main>
+    <h1>STAR WARS<br><span class="small">Universe Lookup</span></h1>
+    <form autocomplete="off" onsubmit="return false;">
+      <label for="searchString">Who you looking for? <span class="small">(Regular expressions are cool here)</span></label>
+      <input id="searchString" oninput="filterCharacters()" placeholder="Search for a character..." />
+    </form>
+    <section id="charactersList">
+    </section>
+  </main>
 </body>
 
 </html>
